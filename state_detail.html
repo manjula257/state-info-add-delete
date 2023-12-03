@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ state.name }} Details</h1>
+    <p>Population: {{ state.population }}</p>
+    <p>Language: {{ state.language }}</p>
+    <p>Capital: {{ state.capital }}</p>
+
+    <div class="actions">
+        <a href="{% url 'state_update' pk=state.pk %}" class="edit-button">Edit</a>
+        <a href="{% url 'state_delete' pk=state.pk %}" class="delete-button">Delete</a>
+        <a href="{% url 'state_list' %}" class="back-button">Back to List</a>
+    </div>
+{% endblock %}
+
+{% block styles %}
+    <!-- Add additional styles for state_detail.html -->
+    <style>
+        /* Add styles specific to state_detail.html */
+        .actions {
+            margin-top: 20px;
+        }
+
+        .edit-button,
+        .delete-button,
+        .back-button {
+            display: inline-block;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .edit-button:hover,
+        .delete-button:hover,
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+{% endblock %}

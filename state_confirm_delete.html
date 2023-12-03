@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Delete Student</h1>
+    <p>Are you sure you want to delete {{ student.first_name }} {{ student.last_name }}?</p>
+
+    <form method="post" class="delete-form">
+        {% csrf_token %}
+        <button type="submit" class="confirm-button">Confirm Delete</button>
+    </form>
+    <button><a href="{% url 'student_list' %}" class="cancel-button">Cancel</a></button>
+{% endblock %}
+
+{% block styles %}
+    <!-- Add additional styles for student_confirm_delete.html -->
+    <style>
+        /* Add styles specific to student_confirm_delete.html */
+        .delete-form {
+            margin-top: 20px;
+        }
+
+        .confirm-button, .cancel-button {
+            display: inline-block;
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        .confirm-button {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .confirm-button:hover {
+            background-color: #bd2130;
+        }
+
+        .cancel-button {
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .cancel-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+{% endblock %}

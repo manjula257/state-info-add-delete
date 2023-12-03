@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Indian States List</h1>
+
+    <table class="state-list">
+        <tr>
+            <th>State Name</th>
+            <th>Population</th>
+            <th>Language</th>
+            <th>Capital</th>
+            <th>Actions</th>
+        </tr>
+        {% for state in object_list %}
+            <tr>
+                <td>{{ state.name }}</td>
+                <td>{{ state.population }}</td>
+                <td>{{ state.language }}</td>
+                <td>{{ state.capital }}</td>
+                <td>
+                    <a href="{% url 'state_detail' pk=state.pk %}" class="view-button">View</a>
+                    <a href="{% url 'state_update' pk=state.pk %}" class="edit-button">Edit</a>
+                    <a href="{% url 'state_delete' pk=state.pk %}" class="delete-button">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'state_create' %}" class="add-state-button">Add New State</a>
+{% endblock %}
+
+{% block styles %}
+    <!-- Add additional styles for state_list.html -->
+    <style>
+        /* Add styles specific to state_list.html */
+        .state-list {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .view-button,
+        .edit-button,
+        .delete-button,
+        .add-state-button {
+            display: inline-block;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .view-button:hover,
+        .edit-button:hover,
+        .delete-button:hover,
+        .add-state-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+{% endblock %}
